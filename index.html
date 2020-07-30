@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Permutação Simples</title>
+</head>
+
+<body>
+  <script>
+
+    const permutator = (inputArr, len) => {
+
+      let result = []
+
+      const permute = (arr, m = []) => {
+        if (m.length === len) {
+          result.push(m)
+        } else {
+          for (let i = 0; i < arr.length; i++) {
+            let curr = Array.from(arr)
+            let next = curr.splice(i, 1)
+            permute(curr.slice(), m.concat(next))
+          }
+        }
+      }
+
+      permute(inputArr)
+
+      return result;
+
+    }
+
+    console.log(permutator("ABC", 1))
+    console.log(permutator("ABC", 2))
+    console.log(permutator("ABC", 3)) 
+
+
+  </script>
+</body>
+
+</html>
